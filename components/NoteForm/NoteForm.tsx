@@ -8,7 +8,7 @@ import { createNoteRequest } from "@/lib/api";
 import { CreateNoteProps } from "@/types/note";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-import { useDraftNote } from "@/store/noteStore";
+import { useDraftNote } from "@/lib/store/noteStore";
 
 const OrderSchema = Yup.object().shape({
   title: Yup.string()
