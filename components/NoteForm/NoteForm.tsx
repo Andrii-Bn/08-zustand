@@ -22,7 +22,7 @@ const OrderSchema = Yup.object().shape({
 });
 
 const NoteForm = () => {
-  const { setDraft, note, clearDraft } = useDraftNote();
+  const { setDraft, draft, clearDraft } = useDraftNote();
 
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -90,7 +90,7 @@ const NoteForm = () => {
           className={css.input}
           required
           onChange={createDraft}
-          value={note?.title}
+          value={draft?.title}
         />
         {errors.title && <p className={css.error}>{errors.title}</p>}
       </div>
@@ -103,7 +103,7 @@ const NoteForm = () => {
           rows={8}
           className={css.textarea}
           onChange={createDraft}
-          value={note?.content}
+          value={draft?.content}
         />
         {errors.content && <p className={css.error}>{errors.content}</p>}
       </div>
@@ -115,7 +115,7 @@ const NoteForm = () => {
           name="tag"
           className={css.select}
           onChange={createDraft}
-          value={note?.tag}
+          value={draft?.tag}
         >
           <option value="Todo">Todo</option>
           <option value="Work">Work</option>
