@@ -5,12 +5,13 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import NotesClient from "./Notes.client";
+import type { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string[] }>;
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const category = slug[0] || "All Notes";
 
@@ -42,7 +43,6 @@ const page = 1;
 
 export default async function Notes({ params }: Props) {
   const queryClient = new QueryClient();
-
   const { slug } = await params;
   const category = slug[0];
 

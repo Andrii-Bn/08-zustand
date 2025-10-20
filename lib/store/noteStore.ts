@@ -3,8 +3,8 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface DraftNoteStore {
-  note: NoteDraft;
-  setDraft: (note: NoteDraft) => void;
+  draft: NoteDraft;
+  setDraft: (draft: NoteDraft) => void;
   clearDraft: () => void;
 }
 
@@ -17,10 +17,10 @@ const initialDraft: NoteDraft = {
 export const useDraftNote = create<DraftNoteStore>()(
   persist(
     (set) => ({
-      note: initialDraft,
-      setDraft: (note: NoteDraft) =>
-        set((prevState) => ({ note: { ...prevState.note, ...note } })),
-      clearDraft: () => set({ note: initialDraft }),
+      draft: initialDraft,
+      setDraft: (draft: NoteDraft) =>
+        set((prevState) => ({ draft: { ...prevState.draft, ...draft } })),
+      clearDraft: () => set({ draft: initialDraft }),
     }),
     { name: "draftNote" }
   )
